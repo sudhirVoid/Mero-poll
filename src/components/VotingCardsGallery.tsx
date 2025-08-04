@@ -49,6 +49,24 @@ export function VotingCardsGallery({ language }: VotingCardsGalleryProps) {
           results={{ gajjab: 45, 'yesto-ni-hunxa': 23, bekar: 12 }}
           showResults={showResults['traditional']}
           userVote={votedCards['traditional']}
+          comments={[
+            {
+              id: '1',
+              text: 'Traffic rules are good but enforcement is the key issue.',
+              author: 'Anonymous_User_1',
+              timestamp: new Date(),
+              votes: 5
+            },
+            {
+              id: '2',
+              text: 'यो नियम राम्रो छ तर कार्यान्वयन कमजोर छ।',
+              author: 'Anonymous_User_2',
+              timestamp: new Date(Date.now() - 3600000),
+              votes: 3
+            }
+          ]}
+          onAddComment={(text) => console.log('New comment:', text)}
+          language={language}
         />
 
         {/* Face-Off Card */}

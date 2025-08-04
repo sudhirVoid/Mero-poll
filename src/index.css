@@ -4,63 +4,63 @@
 
 @layer base {
   :root {
-    /* Nepal-inspired sophisticated color system */
+    /* Shadcn UI + Nepal-inspired sophisticated color system */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 214 84% 16%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 214 84% 16%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 214 84% 16%;
     
-    /* Primary: Sophisticated Nepal Blue */
-    --primary: 220 75% 50%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary: Nepal Blue */
+    --primary: 214 84% 53%;
+    --primary-foreground: 0 0% 98%;
     
-    /* Secondary: Warm Nepal Red */
-    --secondary: 355 75% 50%;
-    --secondary-foreground: 355 40% 98%;
+    /* Secondary: Nepal Red */
+    --secondary: 0 72% 51%;
+    --secondary-foreground: 0 0% 98%;
     
     /* Muted tones for subtle backgrounds */
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 214 32% 91%;
+    --muted-foreground: 214 16% 47%;
     
     /* Accent colors */
-    --accent: 210 40% 94%;
-    --accent-foreground: 222.2 84% 4.9%;
+    --accent: 214 32% 91%;
+    --accent-foreground: 214 84% 16%;
     
     /* Borders and inputs */
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 220 75% 50%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 214 84% 53%;
     
     /* Destructive states */
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
     
     /* Border radius */
-    --radius: 0.75rem;
+    --radius: 0.5rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 220 75% 60%;
-    --primary-foreground: 220 9% 9%;
-    --secondary: 355 75% 60%;
-    --secondary-foreground: 355 9% 9%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 220 75% 60%;
+    --background: 214 84% 4%;
+    --foreground: 0 0% 98%;
+    --card: 214 84% 4%;
+    --card-foreground: 0 0% 98%;
+    --popover: 214 84% 4%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 214 84% 63%;
+    --primary-foreground: 214 84% 4%;
+    --secondary: 0 72% 61%;
+    --secondary-foreground: 0 72% 4%;
+    --muted: 214 32% 18%;
+    --muted-foreground: 214 20% 65%;
+    --accent: 214 32% 18%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62% 31%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214 32% 18%;
+    --input: 214 32% 18%;
+    --ring: 214 84% 63%;
   }
 }
 
@@ -70,5 +70,25 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Custom Nepal-inspired utilities */
+@layer utilities {
+  .nepal-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+  }
+  
+  .nepal-gradient-subtle {
+    background: linear-gradient(135deg, hsl(214 84% 96%) 0%, hsl(0 86% 97%) 100%);
+  }
+  
+  .vote-card-shadow {
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  }
+  
+  .vote-card-shadow-hover {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   }
 }
