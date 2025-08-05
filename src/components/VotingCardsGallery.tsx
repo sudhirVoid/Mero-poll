@@ -23,18 +23,24 @@ export function VotingCardsGallery({ language }: VotingCardsGalleryProps) {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 nepal-bg-subtle min-h-screen">
       {/* Header */}
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+      <div className="text-center mb-12 nepal-corner-accent p-8 rounded-2xl nepal-card-gradient nepal-shadow">
+        <h1 className="text-4xl font-bold nepal-text-gradient mb-4">
           {language === 'ne' ? 'मतदान कार्डहरू' : 'Voting Cards Gallery'}
         </h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <p className="text-xl text-nepal-blue-800 max-w-3xl mx-auto font-medium">
           {language === 'ne' 
             ? 'विभिन्न प्रकारका मतदान कार्डहरू अन्वेषण गर्नुहोस् र तपाईंको मनपर्ने कुरामा मत दिनुहोस्'
             : 'Explore different types of voting cards and cast your vote on topics that matter to you'
           }
         </p>
+        <div className="mt-6 flex justify-center">
+          <div className="nepal-badge">
+            <span>🇳🇵</span>
+            {language === 'ne' ? 'नेपाली प्लेटफर्म' : 'Nepali Platform'}
+          </div>
+        </div>
       </div>
 
       {/* Cards Grid */}
@@ -159,15 +165,14 @@ export function VotingCardsGallery({ language }: VotingCardsGalleryProps) {
         />
 
         {/* More Cards Coming Soon */}
-        <div className="bg-white rounded-xl shadow-lg border-4 border-transparent bg-clip-padding relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-red-600 via-purple-600 to-blue-800 rounded-xl"></div>
-          <div className="bg-white rounded-lg m-1 p-6 relative">
+        <div className="voting-card-nepal nepal-shadow nepal-corner-accent">
+          <div className="p-6 relative z-10">
             <div className="text-center py-12">
               <div className="text-6xl mb-4">🚀</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
+              <h3 className="text-xl font-bold nepal-text-gradient mb-2">
                 {language === 'ne' ? 'थप कार्डहरू आउँदै छन्' : 'More Cards Coming Soon'}
               </h3>
-              <p className="text-gray-600">
+              <p className="text-nepal-blue-700 font-medium">
                 {language === 'ne' 
                   ? 'Swipe Battle, Ranking, Gift Voting, र अन्य 7 कार्डहरू चाँडै आउनेछन्'
                   : 'Swipe Battle, Ranking, Gift Voting, and 7 more cards coming soon'
@@ -175,7 +180,7 @@ export function VotingCardsGallery({ language }: VotingCardsGalleryProps) {
               </p>
               <div className="mt-4 grid grid-cols-4 gap-2 max-w-xs mx-auto">
                 {['🔄', '🏆', '🎁', '⏰', '📍', '📱', '🔮', '🏀'].map((emoji, i) => (
-                  <div key={i} className="text-2xl p-2 bg-gray-100 rounded-lg opacity-50">
+                  <div key={i} className="text-2xl p-2 nepal-card-gradient rounded-lg opacity-75 nepal-glow">
                     {emoji}
                   </div>
                 ))}

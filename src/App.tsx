@@ -102,7 +102,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen nepal-bg-subtle">
       <Header 
         activeTab={activeTab}
         onTabChange={setActiveTab}

@@ -4,63 +4,63 @@
 
 @layer base {
   :root {
-    /* Shadcn UI + Nepal-inspired sophisticated color system */
+    /* Nepali Flag-Inspired Color System */
     --background: 0 0% 100%;
-    --foreground: 214 84% 16%;
+    --foreground: 220 100% 25%;
     --card: 0 0% 100%;
-    --card-foreground: 214 84% 16%;
+    --card-foreground: 220 100% 25%;
     --popover: 0 0% 100%;
-    --popover-foreground: 214 84% 16%;
+    --popover-foreground: 220 100% 25%;
     
-    /* Primary: Nepal Blue */
-    --primary: 214 84% 53%;
+    /* Primary: Nepali Royal Blue */
+    --primary: 240 100% 25%;
     --primary-foreground: 0 0% 98%;
     
-    /* Secondary: Nepal Red */
-    --secondary: 0 72% 51%;
+    /* Secondary: Nepali Feeble Red */
+    --secondary: 0 85% 65%;
     --secondary-foreground: 0 0% 98%;
     
-    /* Muted tones for subtle backgrounds */
-    --muted: 214 32% 91%;
-    --muted-foreground: 214 16% 47%;
+    /* Muted tones with flag colors */
+    --muted: 240 20% 95%;
+    --muted-foreground: 240 50% 40%;
     
     /* Accent colors */
-    --accent: 214 32% 91%;
-    --accent-foreground: 214 84% 16%;
+    --accent: 240 20% 95%;
+    --accent-foreground: 240 100% 25%;
     
-    /* Borders and inputs */
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 214 84% 53%;
+    /* Borders and inputs with flag theme */
+    --border: 240 30% 88%;
+    --input: 240 30% 88%;
+    --ring: 240 100% 25%;
     
     /* Destructive states */
-    --destructive: 0 72% 51%;
+    --destructive: 0 85% 65%;
     --destructive-foreground: 0 0% 98%;
     
     /* Border radius */
-    --radius: 0.5rem;
+    --radius: 0.75rem;
   }
 
   .dark {
-    --background: 214 84% 4%;
+    --background: 240 100% 4%;
     --foreground: 0 0% 98%;
-    --card: 214 84% 4%;
+    --card: 240 100% 4%;
     --card-foreground: 0 0% 98%;
-    --popover: 214 84% 4%;
+    --popover: 240 100% 4%;
     --popover-foreground: 0 0% 98%;
-    --primary: 214 84% 63%;
-    --primary-foreground: 214 84% 4%;
-    --secondary: 0 72% 61%;
-    --secondary-foreground: 0 72% 4%;
-    --muted: 214 32% 18%;
-    --muted-foreground: 214 20% 65%;
-    --accent: 214 32% 18%;
+    --primary: 240 100% 35%;
+    --primary-foreground: 240 100% 4%;
+    --secondary: 0 85% 75%;
+    --secondary-foreground: 0 85% 4%;
+    --muted: 240 50% 15%;
+    --muted-foreground: 240 30% 70%;
+    --accent: 240 50% 15%;
     --accent-foreground: 0 0% 98%;
-    --destructive: 0 62% 31%;
+    --destructive: 0 85% 55%;
     --destructive-foreground: 0 0% 98%;
-    --border: 214 32% 18%;
-    --input: 214 32% 18%;
-    --ring: 214 84% 63%;
+    --border: 240 50% 15%;
+    --input: 240 50% 15%;
+    --ring: 240 100% 35%;
   }
 }
 
@@ -69,26 +69,297 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-gradient-to-br from-red-50 via-white to-blue-50 text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    min-height: 100vh;
   }
 }
 
-/* Custom Nepal-inspired utilities */
+/* Nepali Flag-Inspired Design System */
 @layer utilities {
+  /* Primary Gradients */
   .nepal-gradient {
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+    background: linear-gradient(135deg, #DC2626 0%, #000080 100%);
   }
   
-  .nepal-gradient-subtle {
-    background: linear-gradient(135deg, hsl(214 84% 96%) 0%, hsl(0 86% 97%) 100%);
+  .nepal-gradient-reverse {
+    background: linear-gradient(135deg, #000080 0%, #DC2626 100%);
   }
   
-  .vote-card-shadow {
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  .nepal-gradient-vertical {
+    background: linear-gradient(180deg, #DC2626 0%, #000080 100%);
   }
   
-  .vote-card-shadow-hover {
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  .nepal-gradient-radial {
+    background: radial-gradient(circle at center, #DC2626 0%, #000080 70%);
   }
+  
+  /* Subtle Background Gradients */
+  .nepal-bg-subtle {
+    background: linear-gradient(135deg, #FEF2F2 0%, #EFF6FF 100%);
+  }
+  
+  .nepal-bg-light {
+    background: linear-gradient(135deg, #FCA5A5 0%, #93C5FD 100%);
+  }
+  
+  /* Card Gradients */
+  .nepal-card-gradient {
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(0, 0, 128, 0.1) 100%);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+  }
+  
+  .nepal-card-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    background: linear-gradient(135deg, #DC2626, #000080);
+    border-radius: inherit;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask-composite: xor;
+    z-index: -1;
+  }
+  
+  /* Corner Accents */
+  .nepal-corner-accent {
+    position: relative;
+  }
+  
+  .nepal-corner-accent::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: #DC2626;
+    border-radius: 0 0 12px 0;
+    z-index: 1;
+  }
+  
+  .nepal-corner-accent::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background: #000080;
+    border-radius: 12px 0 0 0;
+    z-index: 1;
+  }
+  
+  /* Button Gradients */
+  .nepal-btn-primary {
+    background: linear-gradient(135deg, #DC2626 0%, #000080 100%);
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+  }
+  
+  .nepal-btn-primary:hover {
+    background: linear-gradient(135deg, #B91C1C 0%, #1E1B4B 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3);
+  }
+  
+  .nepal-btn-secondary {
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(0, 0, 128, 0.1) 100%);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    color: #000080;
+    position: relative;
+  }
+  
+  .nepal-btn-secondary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    background: linear-gradient(135deg, #DC2626, #000080);
+    border-radius: inherit;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask-composite: xor;
+    z-index: -1;
+  }
+  
+  /* Text Gradients */
+  .nepal-text-gradient {
+    background: linear-gradient(135deg, #DC2626 0%, #000080 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Shadow Effects */
+  .nepal-shadow {
+    box-shadow: 0 4px 20px rgba(220, 38, 38, 0.15), 0 2px 10px rgba(0, 0, 128, 0.15);
+  }
+  
+  .nepal-shadow-hover {
+    box-shadow: 0 8px 30px rgba(220, 38, 38, 0.25), 0 4px 15px rgba(0, 0, 128, 0.25);
+  }
+  
+  /* Progress Bars */
+  .nepal-progress-red {
+    background: linear-gradient(90deg, #DC2626 0%, #EF4444 100%);
+  }
+  
+  .nepal-progress-blue {
+    background: linear-gradient(90deg, #000080 0%, #1D4ED8 100%);
+  }
+  
+  /* Voting Card Styles */
+  .voting-card-nepal {
+    background: linear-gradient(135deg, #FEFEFE 0%, #F8FAFC 100%);
+    border: 3px solid transparent;
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .voting-card-nepal::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 3px;
+    background: linear-gradient(135deg, #DC2626 0%, #7C3AED 50%, #000080 100%);
+    border-radius: inherit;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask-composite: xor;
+    z-index: -1;
+  }
+  
+  /* Header Styles */
+  .nepal-header {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
+    backdrop-filter: blur(10px);
+    border-bottom: 3px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+  }
+  
+  .nepal-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #DC2626 0%, #7C3AED 50%, #000080 100%);
+  }
+  
+  /* Navigation Pills */
+  .nepal-nav-pill {
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(0, 0, 128, 0.1) 100%);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .nepal-nav-pill.active {
+    background: linear-gradient(135deg, #DC2626 0%, #000080 100%);
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+  }
+  
+  .nepal-nav-pill:hover:not(.active) {
+    background: linear-gradient(135deg, rgba(220, 38, 38, 0.2) 0%, rgba(0, 0, 128, 0.2) 100%);
+    transform: translateY(-2px);
+  }
+  
+  /* Badge Styles */
+  .nepal-badge {
+    background: linear-gradient(135deg, #DC2626 0%, #000080 100%);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .nepal-badge-outline {
+    background: transparent;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    color: #000080;
+    position: relative;
+  }
+  
+  .nepal-badge-outline::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    background: linear-gradient(135deg, #DC2626, #000080);
+    border-radius: inherit;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask-composite: xor;
+    z-index: -1;
+  }
+  
+  /* Animation Effects */
+  .nepal-pulse {
+    animation: nepal-pulse 2s infinite;
+  }
+  
+  @keyframes nepal-pulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 10px rgba(220, 38, 38, 0);
+    }
+  }
+  
+  .nepal-glow {
+    position: relative;
+  }
+  
+  .nepal-glow::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, #DC2626, #000080);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    filter: blur(8px);
+  }
+  
+  .nepal-glow:hover::before {
+    opacity: 0.6;
+  }
+}
+
+/* Custom scrollbar with Nepal theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #FEF2F2 0%, #EFF6FF 100%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #DC2626 0%, #000080 100%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #B91C1C 0%, #1E1B4B 100%);
 }

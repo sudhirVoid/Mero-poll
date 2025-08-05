@@ -20,16 +20,16 @@ export function Header({ activeTab, onTabChange, language, onLanguageToggle }: H
   ];
 
   return (
-    <header className="bg-white shadow-lg border-b-4 border-gradient-to-r from-red-600 to-blue-800 sticky top-0 z-50">
+    <header className="nepal-header sticky top-0 z-50 nepal-shadow">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className={`w-10 h-10 rounded-lg ${gradients.nepal} flex items-center justify-center shadow-lg`}>
+            <div className="w-10 h-10 rounded-lg nepal-gradient flex items-center justify-center nepal-shadow nepal-corner-accent">
               <span className="text-white font-bold text-lg">M</span>
             </div>
             <div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-red-600 to-blue-800 bg-clip-text text-transparent">
+              <h1 className="text-2xl font-bold nepal-text-gradient">
                 MeroVote
               </h1>
               <p className="text-xs text-gray-500">
@@ -46,10 +46,10 @@ export function Header({ activeTab, onTabChange, language, onLanguageToggle }: H
                 <button
                   key={item.id}
                   onClick={() => onTabChange(item.id)}
-                  className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-200 ${
+                  className={`nepal-nav-pill flex items-center space-x-2 ${
                     activeTab === item.id
-                      ? `${gradients.nepal} text-white shadow-lg`
-                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                      ? 'active'
+                      : 'text-nepal-blue-900'
                   }`}
                 >
                   <Icon size={20} />
@@ -65,7 +65,7 @@ export function Header({ activeTab, onTabChange, language, onLanguageToggle }: H
           <div className="flex items-center space-x-4">
             <button
               onClick={onLanguageToggle}
-              className="flex items-center space-x-2 px-3 py-2 rounded-lg border-2 border-gray-200 hover:border-red-300 transition-all duration-200"
+              className="nepal-btn-secondary flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-200 nepal-glow"
             >
               <Globe size={18} />
               <span className="font-medium">{language === 'ne' ? 'EN' : 'नेपाली'}</span>
@@ -74,7 +74,7 @@ export function Header({ activeTab, onTabChange, language, onLanguageToggle }: H
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100"
+              className="md:hidden p-2 rounded-lg nepal-btn-secondary"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -83,7 +83,7 @@ export function Header({ activeTab, onTabChange, language, onLanguageToggle }: H
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200">
+          <div className="md:hidden py-4 border-t-2 border-nepal-purple-300">
             <nav className="space-y-2">
               {navItems.map((item) => {
                 const Icon = item.icon;
@@ -94,10 +94,10 @@ export function Header({ activeTab, onTabChange, language, onLanguageToggle }: H
                       onTabChange(item.id);
                       setIsMenuOpen(false);
                     }}
-                    className={`flex items-center space-x-3 w-full px-4 py-3 rounded-lg text-left transition-all duration-200 ${
+                    className={`nepal-nav-pill flex items-center space-x-3 w-full text-left ${
                       activeTab === item.id
-                        ? `${gradients.nepal} text-white`
-                        : 'text-gray-600 hover:bg-gray-100'
+                        ? 'active'
+                        : 'text-nepal-blue-900'
                     }`}
                   >
                     <Icon size={20} />

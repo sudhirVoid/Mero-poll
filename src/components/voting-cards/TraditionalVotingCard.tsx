@@ -93,38 +93,37 @@ export function TraditionalVotingCard({
   ];
 
   return (
-    <Card className="w-full max-w-2xl mx-auto vote-card-shadow hover:vote-card-shadow-hover transition-all duration-300 border-0 bg-gradient-to-br from-card via-card to-nepal-blue-50/30">
-      <div className="absolute inset-0 nepal-gradient-subtle opacity-50 rounded-lg"></div>
+    <div className="voting-card-nepal nepal-shadow hover:nepal-shadow-hover transition-all duration-300 nepal-corner-accent nepal-glow">
       <div className="relative">
-        <CardHeader className="pb-4">
+        <div className="p-6 pb-4">
           <div className="flex items-start justify-between">
             <div className="flex-1">
-              <CardTitle className="text-xl font-bold text-foreground mb-2">
+              <h3 className="text-xl font-bold nepal-text-gradient mb-2">
                 {titleNepali && (
-                  <span className="block text-2xl mb-1 font-semibold text-nepal-blue-700">
+                  <span className="block text-2xl mb-1 font-semibold text-nepal-blue-900">
                     {titleNepali}
                   </span>
                 )}
                 {title}
-              </CardTitle>
-              <CardDescription className="text-muted-foreground text-base leading-relaxed">
+              </h3>
+              <p className="text-nepal-blue-700 text-base leading-relaxed font-medium">
                 {description}
-              </CardDescription>
+              </p>
             </div>
           </div>
           
           <div className="flex items-center gap-2 mt-4">
-            <Badge variant="nepal-primary" className="text-xs font-medium">
+            <div className="nepal-badge">
               {language === 'ne' ? 'पारम्परिक मतदान' : 'Traditional Voting'}
-            </Badge>
+            </div>
             <div className="flex items-center gap-1 text-xs text-muted-foreground">
               <Shield className="w-3 h-3" />
               <span>{language === 'ne' ? 'गुमनाम' : 'Anonymous'}</span>
             </div>
           </div>
-        </CardHeader>
+        </div>
 
-        <CardContent className="pt-0">
+        <div className="px-6 pt-0">
           {/* Voting Options */}
           <div className="space-y-3">
             {options.map((option) => {
@@ -134,34 +133,31 @@ export function TraditionalVotingCard({
               
               return (
                 <div key={option.key} className="relative">
-                  <Button
+                  <button
                     onClick={() => handleVote(option.key)}
                     disabled={isVoting || showResults}
-                    variant={isSelected ? option.variant : "outline"}
-                    className={cn(
-                      "w-full h-auto p-4 justify-start text-left transition-all duration-300",
-                      isSelected && "ring-2 ring-ring ring-offset-2",
-                      !showResults && !isSelected && "hover:scale-[1.02]",
-                      isVoting && "animate-pulse",
-                      showResults && "cursor-default"
-                    )}
+                    className={`w-full p-4 rounded-lg transition-all duration-300 ${
+                      isSelected 
+                        ? 'nepal-btn-primary nepal-shadow' 
+                        : 'nepal-btn-secondary nepal-glow'
+                    } ${!showResults && !isSelected ? 'hover:scale-[1.02]' : ''} ${
+                      isVoting ? 'animate-pulse' : ''
+                    } ${showResults ? 'cursor-default' : ''}`}
                   >
                     <div className="flex items-center justify-between w-full">
                       <div className="flex items-center space-x-3">
-                        <div className={cn(
-                          "p-2 rounded-full transition-colors",
-                          isSelected ? "bg-background/20" : option.bgColor
-                        )}>
-                          <Icon className={cn(
-                            "w-5 h-5",
-                            isSelected ? "text-current" : option.textColor
-                          )} />
+                        <div className={`p-2 rounded-full transition-colors ${
+                          isSelected ? "bg-white/20" : "nepal-card-gradient"
+                        }`}>
+                          <Icon className={`w-5 h-5 ${
+                            isSelected ? "text-current" : "text-nepal-blue-800"
+                          }`} />
                         </div>
                         <div>
-                          <div className="font-semibold text-sm">
+                          <div className="font-semibold text-sm text-left">
                             {option.labelNepali}
                           </div>
-                          <div className="text-xs opacity-80">
+                          <div className="text-xs opacity-80 text-left">
                             {option.label}
                           </div>
                         </div>
@@ -169,21 +165,27 @@ export function TraditionalVotingCard({
                       
                       {showResults && (
                         <div className="text-right">
-                          <div className="font-bold text-lg">{results[option.key]}</div>
+                          <div className="font-bold text-lg nepal-text-gradient">{results[option.key]}</div>
                           <div className="text-xs opacity-70">{percentage.toFixed(1)}%</div>
                         </div>
                       )}
                     </div>
-                  </Button>
+                  </button>
 
                   {/* Progress Bar */}
                   {showResults && (
                     <div className="mt-2 px-4">
-                      <Progress 
-                        value={percentage} 
-                        className="h-2"
-                      />
-                      <div className="flex justify-between text-xs text-muted-foreground mt-1">
+                      <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <div 
+                          className={`h-full transition-all duration-1000 ease-out ${
+                            option.key === 'gajjab' ? 'nepal-progress-red' : 
+                            option.key === 'bekar' ? 'nepal-progress-blue' : 
+                            'bg-gradient-to-r from-nepal-red-500 to-nepal-blue-500'
+                          }`}
+                          style={{ width: `${percentage}%` }}
+                        ></div>
+                      </div>
+                      <div className="flex justify-between text-xs text-nepal-blue-600 mt-1">
                         <span>{results[option.key]} votes</span>
                         <span>{percentage.toFixed(1)}%</span>
                       </div>
@@ -193,14 +195,14 @@ export function TraditionalVotingCard({
               );
             })}
           </div>
-        </CardContent>
+        </div>
 
-        <CardFooter className="flex-col space-y-4">
+        <div className="p-6 pt-4 flex-col space-y-4">
           {/* Results Summary */}
           {showResults && (
             <div className="w-full">
-              <Separator className="mb-4" />
-              <div className="flex items-center justify-between text-sm text-muted-foreground">
+              <div className="w-full h-px bg-gradient-to-r from-nepal-red-300 to-nepal-blue-300 mb-4"></div>
+              <div className="flex items-center justify-between text-sm text-nepal-blue-700">
                 <div className="flex items-center gap-2">
                   <Users className="w-4 h-4" />
                   <span>
@@ -209,7 +211,7 @@ export function TraditionalVotingCard({
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-1">
-                    <Shield className="w-4 h-4 text-nepal-vote-positive" />
+                    <Shield className="w-4 h-4 text-nepal-red-600" />
                     <span>{language === 'ne' ? 'सुरक्षित' : 'Secure'}</span>
                   </div>
                   <div className="flex items-center gap-1">
@@ -223,43 +225,42 @@ export function TraditionalVotingCard({
 
           {/* Comments Section */}
           <div className="w-full">
-            <Separator className="mb-4" />
-            <Button
-              variant="ghost"
+            <div className="w-full h-px bg-gradient-to-r from-nepal-red-300 to-nepal-blue-300 mb-4"></div>
+            <button
               onClick={() => setShowComments(!showComments)}
-              className="w-full justify-start p-0 h-auto text-sm font-medium text-muted-foreground hover:text-foreground"
+              className="w-full text-left p-0 h-auto text-sm font-medium text-nepal-blue-700 hover:text-nepal-blue-900 transition-colors"
             >
               <MessageSquare className="w-4 h-4 mr-2" />
               {language === 'ne' ? 'टिप्पणीहरू' : 'Comments'} ({comments.length})
-            </Button>
+            </button>
 
             {showComments && (
               <div className="mt-4 space-y-4">
                 {/* Add Comment */}
                 {onAddComment && (
                   <div className="space-y-2">
-                    <Textarea
+                    <textarea
                       placeholder={language === 'ne' ? 'आफ्नो विचार साझा गर्नुहोस्...' : 'Share your thoughts...'}
                       value={newComment}
                       onChange={(e) => setNewComment(e.target.value)}
-                      className="min-h-[80px] resize-none"
+                      className="w-full min-h-[80px] p-3 border-2 border-nepal-blue-200 rounded-lg focus:border-nepal-blue-500 focus:outline-none resize-none nepal-card-gradient"
+                      rows={3}
                     />
-                    <Button
+                    <button
                       onClick={handleAddComment}
                       disabled={!newComment.trim()}
-                      size="sm"
-                      className="ml-auto flex"
+                      className="ml-auto flex items-center nepal-btn-primary px-4 py-2 rounded-lg disabled:opacity-50"
                     >
                       <Send className="w-4 h-4 mr-2" />
                       {language === 'ne' ? 'पठाउनुहोस्' : 'Post'}
-                    </Button>
+                    </button>
                   </div>
                 )}
 
                 {/* Comments List */}
                 <div className="space-y-3 max-h-60 overflow-y-auto">
                   {comments.length === 0 ? (
-                    <div className="text-center py-6 text-muted-foreground">
+                    <div className="text-center py-6 text-nepal-blue-600">
                       <MessageSquare className="w-8 h-8 mx-auto mb-2 opacity-50" />
                       <p className="text-sm">
                         {language === 'ne' 
@@ -269,7 +270,7 @@ export function TraditionalVotingCard({
                     </div>
                   ) : (
                     comments.map((comment) => (
-                      <div key={comment.id} className="bg-muted/50 rounded-lg p-3 border">
+                      <div key={comment.id} className="nepal-card-gradient rounded-lg p-3 border-2 border-nepal-blue-200">
                         <div className="flex items-start justify-between mb-2">
                           <div className="flex items-center gap-2">
                             <div className="w-6 h-6 rounded-full nepal-gradient flex items-center justify-center text-xs font-bold text-white">
@@ -277,16 +278,16 @@ export function TraditionalVotingCard({
                             </div>
                             <span className="text-sm font-medium">{comment.author}</span>
                           </div>
-                          <span className="text-xs text-muted-foreground">
+                          <span className="text-xs text-nepal-blue-600">
                             {comment.timestamp.toLocaleDateString()}
                           </span>
                         </div>
-                        <p className="text-sm text-foreground mb-2">{comment.text}</p>
+                        <p className="text-sm text-nepal-blue-800 mb-2">{comment.text}</p>
                         <div className="flex items-center gap-2">
-                          <Button variant="ghost" size="sm" className="h-6 px-2 text-xs">
+                          <button className="h-6 px-2 text-xs nepal-btn-secondary rounded flex items-center">
                             <ThumbsUp className="w-3 h-3 mr-1" />
                             {comment.votes}
-                          </Button>
+                          </button>
                         </div>
                       </div>
                     ))
@@ -295,8 +296,8 @@ export function TraditionalVotingCard({
               </div>
             )}
           </div>
-        </CardFooter>
+        </div>
       </div>
-    </Card>
+    </div>
   );
 }
